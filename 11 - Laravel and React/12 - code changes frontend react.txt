@@ -1,0 +1,77 @@
+TITLE: Frontend (React) Code Changes – What & Why
+
+This file documents ALL React-side changes.
+
+------------------------------------
+FILE: src/api/axios.js
+------------------------------------
+
+WHY THIS FILE EXISTS:
+To centralize API configuration.
+
+PROBLEM BEFORE:
+Hardcoding URLs everywhere causes mistakes.
+
+SOLUTION:
+Create ONE Axios instance with baseURL.
+
+CODE:
+import axios from "axios";
+
+const api = axios.create({
+  baseURL: "http://127.0.0.1:8000/api",
+});
+
+export default api;
+
+WHY 127.0.0.1 INSTEAD OF localhost:
+Windows sometimes resolves localhost differently.
+127.0.0.1 is more reliable.
+
+------------------------------------
+FILE: src/services/movieService.js
+------------------------------------
+
+WHY THIS FILE EXISTS:
+Separation of concerns.
+
+UI SHOULD NOT:
+- Know API URLs
+- Handle HTTP logic
+
+SERVICE LAYER DOES:
+export const getMovies = async () => {
+  const response = await api.get("/movies");
+  return response.data;
+};
+
+PROBLEM WE ENCOUNTERED:
+Sometimes Laravel wraps data like:
+{ "data": [...] }
+
+SOLUTION:
+Change return to:
+return response.data.data;
+
+RULE:
+React must match the API response shape EXACTLY.
+
+------------------------------------
+FILE: src/App.js
+------------------------------------
+
+WHY THIS FILE WAS MODIFIED:
+To fetch data when the page loads.
+
+KEY CONCEPT:
+useEffect runs when component mounts.
+
+LOGIC FLOW:
+1. Page loads
+2. useEffect runs
+3. API request is sent
+4. Data saved in state
+5. UI re-renders
+
+WHY movies.map FAILED INITIALLY:
+movies was empty because data was blocked (CORS).

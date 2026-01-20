@@ -1,0 +1,28 @@
+TITLE: Understanding the System (Mental Model)
+
+This project is a FULL-STACK APPLICATION using TWO SEPARATE SYSTEMS.
+
+1) Laravel (Backend)
+2) React (Frontend)
+
+They are NOT the same thing.
+They do NOT run together.
+They do NOT share files.
+
+Laravel:
+- Runs on PHP
+- Handles database, business logic, API endpoints
+- Returns data as JSON
+- Does NOT render HTML pages for users
+
+React:
+- Runs in the browser
+- Handles UI, buttons, pages, interaction
+- Does NOT talk to the database directly
+- Requests data from Laravel using HTTP
+
+IMPORTANT IDEA:
+React NEVER touches the database.
+Laravel NEVER controls the UI.
+
+They communicate ONLY through HTTP requests.

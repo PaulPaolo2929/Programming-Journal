@@ -1,0 +1,27 @@
+ERROR: npm error Missing script: "start"
+WHY:
+npm start was run inside Laravel folder
+Laravel is NOT a React app
+
+SOLUTION:
+Run npm start ONLY in cinema-frontend
+
+---
+
+ERROR: Can't resolve 'axios'
+WHY:
+Axios was imported but not installed
+
+SOLUTION:
+npm install axios
+
+---
+
+ERROR: Page loads but list is empty
+WHY:
+- CORS blocked response
+- Or API response wrapped in "data"
+
+SOLUTION:
+- Fix CORS allowed origins
+- Match React to API response shape

@@ -1,0 +1,44 @@
+TITLE: Problem → Cause → Solution Mapping
+
+------------------------------------
+PROBLEM:
+npm error Missing script: "start"
+------------------------------------
+CAUSE:
+Ran npm start in Laravel folder
+
+SOLUTION:
+npm start ONLY runs in React project
+
+------------------------------------
+PROBLEM:
+Can't resolve 'axios'
+------------------------------------
+CAUSE:
+Axios imported but not installed
+
+SOLUTION:
+npm install axios
+
+------------------------------------
+PROBLEM:
+Cinema Movies title shows, but list is empty
+------------------------------------
+CAUSE:
+1) CORS blocked response
+2) API response wrapped in "data"
+
+SOLUTION:
+1) Fix cors.php allowed origins
+2) Adjust response.data vs response.data.data
+
+------------------------------------
+PROBLEM:
+Network Error
+------------------------------------
+CAUSE:
+Laravel not running or wrong baseURL
+
+SOLUTION:
+php artisan serve
+Check Axios baseURL

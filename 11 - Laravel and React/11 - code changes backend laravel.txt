@@ -1,0 +1,76 @@
+TITLE: Backend (Laravel) Code Changes – What & Why
+
+This file documents ALL backend-related code changes
+and the exact reasons they were required.
+
+------------------------------------
+FILE: routes/api.php
+------------------------------------
+
+WHAT THIS FILE DOES:
+Defines API endpoints that React can call.
+
+WHY IT MATTERS:
+React can ONLY access routes defined here.
+Routes in web.php are NOT meant for APIs.
+
+EXAMPLE:
+Route::get('/movies', [MovieController::class, 'index']);
+
+PROBLEM BEFORE:
+React had nothing to call if routes were missing or wrong.
+
+SOLUTION:
+Ensure all API endpoints are in routes/api.php.
+
+RULE:
+If React calls /api/xxx → route MUST exist here.
+
+------------------------------------
+FILE: app/Http/Controllers/MovieController.php
+------------------------------------
+
+WHAT THIS FILE DOES:
+Handles logic and returns data to React.
+
+IMPORTANT RULE:
+Controllers MUST return JSON, NOT views.
+
+CORRECT:
+return response()->json($movies);
+
+WRONG:
+return view('movies');
+
+WHY:
+React expects JSON data.
+Returning views breaks the API contract.
+
+------------------------------------
+FILE: config/cors.php
+------------------------------------
+
+WHY THIS FILE EXISTS:
+Controls which frontends are allowed to call the API.
+
+PROBLEM:
+Laravel 12 does NOT include this file by default.
+
+SOLUTION:
+We published it using:
+php artisan config:publish cors
+
+WITHOUT THIS FILE:
+Browser blocks React requests silently.
+
+------------------------------------
+IMPORTANT COMMAND:
+php artisan optimize:clear
+------------------------------------
+
+WHY THIS WAS REQUIRED:
+Laravel caches configuration.
+Without clearing cache, changes DO NOT APPLY.
+
+COMMON MISTAKE:
+Editing cors.php but forgetting this command.

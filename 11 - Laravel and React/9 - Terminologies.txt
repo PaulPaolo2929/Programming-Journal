@@ -1,0 +1,22 @@
+TERMINOLOGIES
+
+API:
+Backend endpoints returning JSON
+
+CORS:
+Browser security rule blocking cross-origin requests
+
+Axios:
+HTTP client used by React to call APIs
+
+useEffect:
+React hook that runs code on component load
+
+baseURL:
+Common API prefix used by Axios
+
+Port:
+Different servers run on different ports (3000, 8000)
+
+JSON:
+Data format exchanged between backend and frontend

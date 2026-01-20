@@ -1,0 +1,38 @@
+TITLE: React Frontend Setup (Detailed Explanation)
+
+STEP 1: Create React app
+Command:
+npx create-react-app cinema-frontend
+
+WHY:
+This creates:
+- Webpack config
+- React scripts
+- Dev server
+- Folder structure
+
+STEP 2: Enter project
+Command:
+cd cinema-frontend
+
+STEP 3: Install Axios
+Command:
+npm install axios
+
+WHY:
+React does NOT have a built-in HTTP client.
+Axios is used to make API requests to Laravel.
+
+STEP 4: Start React server
+Command:
+npm start
+
+RESULT:
+React runs on:
+http://localhost:3000
+OR
+http://localhost:3001 (if 3000 is busy)
+
+IMPORTANT:
+React port can change.
+Laravel must allow that port via CORS.

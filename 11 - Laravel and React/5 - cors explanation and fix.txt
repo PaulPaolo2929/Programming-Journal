@@ -1,0 +1,41 @@
+TITLE: CORS – Full Explanation (Why Everything Broke)
+
+CORS = Cross-Origin Resource Sharing
+
+THE PROBLEM:
+Browsers block requests when:
+- Frontend and backend use different ports
+- Or different domains
+
+Example:
+React → localhost:3001
+Laravel → 127.0.0.1:8000
+
+Browser says:
+"I don’t trust this request unless backend allows it."
+
+THIS IS NOT A LARAVEL BUG.
+THIS IS BROWSER SECURITY.
+
+LARAVEL 12 IMPORTANT NOTE:
+cors.php is NOT created by default.
+
+STEP 1: Publish CORS config
+Command:
+php artisan config:publish cors
+
+STEP 2: Edit file
+cinema-api/config/cors.php
+
+allowed_origins => [
+  'http://localhost:3000',
+  'http://localhost:3001',
+]
+
+STEP 3: Clear config cache
+Command:
+php artisan optimize:clear
+
+WHY CACHE CLEAR IS REQUIRED:
+Laravel caches config for performance.
+Changes do NOTHING until cache is cleared.

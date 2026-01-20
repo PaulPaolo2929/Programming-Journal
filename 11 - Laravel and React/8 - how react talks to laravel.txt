@@ -1,0 +1,31 @@
+TITLE: How React Communicates with Laravel
+
+React uses Axios to send HTTP requests.
+
+STEP 1: Axios configuration
+File:
+src/api/axios.js
+
+WHY:
+Avoid repeating the base URL everywhere.
+
+baseURL:
+http://127.0.0.1:8000/api
+
+STEP 2: Service layer
+File:
+src/services/movieService.js
+
+WHY:
+- Keeps API logic out of UI
+- Makes code cleaner and reusable
+
+STEP 3: React component
+App.js uses useEffect
+
+WHY useEffect:
+- Runs once when page loads
+- Perfect for fetching initial data
+
+DATA FLOW:
+React → Axios → Laravel API → JSON → React state → UI

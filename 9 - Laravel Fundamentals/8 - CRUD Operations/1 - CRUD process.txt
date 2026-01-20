@@ -1,6 +1,21 @@
 STEP 8 — CRUD OPERATIONS (Complete Step-by-Step Guide)
 =====================================================
 
+Create table --- php artisan make:migration create_students_table	For new tables
+Add column ---	php artisan make:migration add_course_to_students_table --table=students	Add new fields
+Remove column ---	php artisan make:migration remove_course_from_students_table --table=students	Drop fields
+Run all ---	php artisan migrate	Apply all changes
+Reset all ---	php artisan migrate:fresh	Rebuild from scratch
+
+
+Step 3 — Clear and refresh Laravel cache
+After editing .env, run these commands in your terminal (inside your project):
+php artisan config:clear
+php artisan cache:clear
+php artisan config:cache
+
+
+
 GOAL
 ----
 Create a complete Create-Read-Update-Delete system for students,

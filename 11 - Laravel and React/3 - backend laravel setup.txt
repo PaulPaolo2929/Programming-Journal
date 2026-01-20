@@ -1,0 +1,47 @@
+TITLE: Laravel Backend Setup (Detailed Explanation)
+
+STEP 1: Install dependencies
+Command:
+composer install
+
+WHY:
+Laravel uses Composer to install PHP libraries.
+Without this, the project cannot run.
+
+STEP 2: Environment configuration (.env)
+The .env file stores environment-specific settings:
+- Database name
+- App URL
+- Debug mode
+
+Example:
+APP_URL=http://localhost
+DB_DATABASE=cinema_db
+
+WHY:
+Laravel reads this file to know how to connect to the database.
+
+STEP 3: Database migration
+Command:
+php artisan migrate
+
+WHY:
+This creates tables in the database.
+Without migrations, APIs may work but return empty data.
+
+STEP 4: Start Laravel server
+Command:
+php artisan serve
+
+RESULT:
+Laravel runs on:
+http://127.0.0.1:8000
+
+STEP 5: Test API directly
+Open browser:
+http://127.0.0.1:8000/api/movies
+
+WHY:
+Always test backend FIRST.
+If this fails, React will NEVER work.
+This ensures the backend is functioning before integrating with the frontend.

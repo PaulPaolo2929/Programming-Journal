@@ -1,0 +1,36 @@
+TITLE: Correct Project & Folder Structure (CRITICAL)
+
+Your system MUST look like this:
+
+ROOT FOLDER (example: htdocs)
+│
+├── cinema-api
+│   ├── app/
+│   ├── config/
+│   ├── routes/
+│   ├── database/
+│   ├── .env
+│   └── artisan
+│
+└── cinema-frontend
+    ├── src/
+    ├── public/
+    ├── node_modules/
+    ├── package.json
+    └── README.md
+
+RULES:
+- Laravel lives in cinema-api
+- React lives in cinema-frontend
+- They NEVER go inside each other
+
+WHY THIS MATTERS:
+Each project has:
+- Its own server
+- Its own dependencies
+- Its own startup command
+
+Mixing them causes:
+- npm errors
+- missing scripts
+- broken builds

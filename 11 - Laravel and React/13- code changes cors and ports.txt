@@ -1,0 +1,40 @@
+TITLE: CORS & PORT ISSUES – WHAT BROKE AND WHY
+
+------------------------------------
+PROBLEM:
+React ran on PORT 3001
+Laravel allowed ONLY PORT 3000
+------------------------------------
+
+Browser behavior:
+- Request sent
+- Response blocked
+- NO crash
+- NO clear error
+
+THIS IS WHY IT WAS CONFUSING.
+
+------------------------------------
+FILE MODIFIED:
+config/cors.php
+------------------------------------
+
+BEFORE:
+allowed_origins => ['http://localhost:3000']
+
+AFTER:
+allowed_origins => [
+  'http://localhost:3000',
+  'http://localhost:3001',
+]
+
+WHY THIS FIXED IT:
+Browser now trusts React’s origin.
+
+IMPORTANT LESSON:
+React port can change.
+CORS must allow the ACTIVE port.
+
+------------------------------------
+RULE TO REMEMBER:
+If UI loads but data is empty → CHECK CORS FIRST
